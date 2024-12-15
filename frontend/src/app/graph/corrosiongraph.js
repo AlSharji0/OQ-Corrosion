@@ -101,7 +101,7 @@ const CorrosionGraph = ({ measuredData, predictedData }) => {
           <label className=' text-black text-2xl'>Threshold (mm/year): </label>
           <input
             type="number"
-            step="0.1"
+            step="0.001"
             value={threshold}
             onChange={(e) => setThreshold(parseFloat(e.target.value))}
             className='text-xl  p-3 text-black'

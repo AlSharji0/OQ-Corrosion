@@ -35,6 +35,7 @@ export default function Home() {
   const handleLocationClick = (location) => {
     setSelectedLocation(selectedLocation === location ? null : location);
   };
+  
   return (
     <div className="w-screen max-w-[100%] min-h-screen bg-white overflow-x-hidden">
       <h1 className="pt-2 w-full text-center text-8xl font-bold text-black">Data Summary</h1>
