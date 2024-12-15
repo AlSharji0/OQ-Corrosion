@@ -63,36 +63,36 @@ export default function Home() {
         <div className="w-full h-[1px] bg-black"></div>
 
         <div className="grid grid-cols-2 w-full h-full mb-10 justify-center items-start gap-4">
-        <OmanMap />
-        <div className="w-full flex items-center flex-col gap-10 h-full">
-          {['A', 'B', 'C'].map((location) => (
-            <div 
-              key={location}
-              className={`${
-                selectedLocation === location ? 'scale-105' : ''
-              } ${
-                location === 'A' ? 'bg-blue-300 hover:bg-blue-400' :
-                location === 'B' ? 'bg-red-300 hover:bg-red-400' :
-                'bg-yellow-300 hover:bg-yellow-400'
-              } w-[80%] rounded-xl text-black p-4 cursor-pointer transition-all shadow-md`}
-              onClick={() => handleLocationClick(location)}
-            >
-              <h3 className="font-semibold mb-2">Location {location}</h3>
-              {selectedLocation === location && (
-                <>
-                  <p className="text-red-600">Corrosion rate: {locationData[location].measured.toFixed(3)} mm/year</p>
-                  <p className="text-blue-600">Predicted corrosion rate: {locationData[location].predicted.toFixed(3)} mm/year</p>
-                  <p className="text-yellow-600">Flow rate: {locationData[location].flow} m³/day</p>
-                  <p className="text-orange-400">Upper Bound: {locationData[location].upperBound.toFixed(3)} mm/year</p>
-                  <p className="text-orange-400">Lower Bound: {locationData[location].lowerBound.toFixed(3)} mm/year</p>
-                </>
-              )}
-              {selectedLocation !== location && (
-                <p>Click to view details</p>
-              )}
-            </div>
-          ))}
-        </div>
+          <OmanMap />
+          <div className="w-full flex items-center flex-col gap-10 h-full">
+            {['A', 'B', 'C'].map((location) => (
+              <div 
+                key={location}
+                className={`${
+                  selectedLocation === location ? 'scale-105' : ''
+                } ${
+                  location === 'A' ? 'bg-blue-100 hover:bg-blue-200' :
+                  location === 'B' ? 'bg-red-100 hover:bg-red-200' :
+                  'bg-yellow-100 hover:bg-yellow-200'
+                } w-[80%] rounded-xl text-black p-4 cursor-pointer transition-all shadow-md`}
+                onClick={() => handleLocationClick(location)}
+              >
+                <h3 className="font-semibold mb-2">Location {location}</h3>
+                {selectedLocation === location && (
+                  <>
+                    <p className="text-red-600">Corrosion rate: {locationData[location].measured.toFixed(3)} mm/year</p>
+                    <p className="text-blue-600">Predicted corrosion rate: {locationData[location].predicted.toFixed(3)} mm/year</p>
+                    <p className="text-yellow-600">Flow rate: {locationData[location].flow} m³/day</p>
+                    <p className="text-orange-400">Upper Bound: {locationData[location].upperBound.toFixed(3)} mm/year</p>
+                    <p className="text-orange-400">Lower Bound: {locationData[location].lowerBound.toFixed(3)} mm/year</p>
+                  </>
+                )}
+                {selectedLocation !== location && (
+                  <p>Click to view details</p>
+                )}
+              </div>
+            ))}
+          </div>
       </div>
     </div>
     </div>
