@@ -94,30 +94,35 @@ const CorrosionGraph = ({ measuredData, predictedData }) => {
   ];
 
   return (
-    <div className='w-full flex justify-center flex-col items-center '>
-      <div className='w-full justify-center flex items-center flex-row gap-10'>
-        <label className=' text-black text-2xl'>Threshold (mm/year): </label>
-        <input
-          type="number"
-          step="0.1"
-          value={threshold}
-          onChange={(e) => setThreshold(parseFloat(e.target.value))}
-          className='text-xl text-black'
-        />
+    <div className='w-full justify-center grid grid-cols-2 items-center '>
+      
+      <div className='w-[90%] h-full flex justify-start items-start flex-col rounded-xl border-2 p-5'>
+        <div className='w-full  flex items-center flex-row gap-10 border-b-2'>
+          <label className=' text-black text-2xl'>Threshold (mm/year): </label>
+          <input
+            type="number"
+            step="0.1"
+            value={threshold}
+            onChange={(e) => setThreshold(parseFloat(e.target.value))}
+            className='text-xl  p-3 text-black'
+          />
+          
+        </div>
+        {predictedData.some(item => item.rate > threshold) && (
+            <div style={{ color: 'red', marginTop: '10px' }}>
+              Warning: Predicted corrosion rate exceeds threshold!
+            </div>
+        )}
       </div>
       
-      {predictedData.some(item => item.rate > threshold) && (
-        <div style={{ color: 'red', marginTop: '10px' }}>
-          Warning: Predicted corrosion rate exceeds threshold!
-        </div>
-      )}
+      
 
       <LineChart
         width={800}
         height={400}
         data={combinedData}
         margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
-        className='rounded-xl border-2 border-gray p-2'
+        className='rounded-xl border-2 border-gray p-2 '
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis 
@@ -125,11 +130,13 @@ const CorrosionGraph = ({ measuredData, predictedData }) => {
           label={{ value: 'Time (days)', position: 'bottom' }}
           type="number"
           domain={[1, total_size]}
-          ticks={[1, 2, 3, 4, 5, 6]}
+          ticks={[1, 2, 3, 4, 5, 6,7,8,9]}
           
         />
         <YAxis 
-          label={{ value: 'Corrosion Rate (mm/year)', angle: -90, position: 'insideLeft' }}
+          label={{ value: 'Corrosion Rate (mm/year)', angle: -90, position: 'insideLeft' ,offset: -5,  style: {
+            textAnchor: 'middle'
+          }  }}
           domain={[0, 0.6]}
         />
         <Tooltip content={<CustomTooltip/>} />
